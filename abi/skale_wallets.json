@@ -1,0 +1,469 @@
+[
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "NodeRefundedBySchain",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "node",
+                "indexed": false
+            },
+            {
+                "type": "bytes32",
+                "name": "schainHash",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "NodeRefundedByValidator",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "node",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "validatorId",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleGranted",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "account",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "sender",
+                "indexed": true
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleRevoked",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "account",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "sender",
+                "indexed": true
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "SchainWalletRecharged",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "sponsor",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "indexed": false
+            },
+            {
+                "type": "bytes32",
+                "name": "schainHash",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "ValidatorWalletRecharged",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "sponsor",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "validatorId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "DEFAULT_ADMIN_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+            {
+                "type": "bytes32",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "contractManager",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+            {
+                "type": "address",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getRoleAdmin",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "bytes32",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getRoleMember",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            },
+            {
+                "type": "uint256",
+                "name": "index"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "address",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getRoleMemberCount",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getSchainBalance",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "schainHash"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getValidatorBalance",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "validatorId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "grantRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            },
+            {
+                "type": "address",
+                "name": "account"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "hasRole",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            },
+            {
+                "type": "address",
+                "name": "account"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "bool",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "initialize",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "contractsAddress"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "rechargeSchainWallet",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "schainHash"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "rechargeValidatorWallet",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "validatorId"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "refundGasBySchain",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "schainHash"
+            },
+            {
+                "type": "address",
+                "name": "spender"
+            },
+            {
+                "type": "uint256",
+                "name": "spentGas"
+            },
+            {
+                "type": "bool",
+                "name": "isDebt"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "refundGasByValidator",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "validatorId"
+            },
+            {
+                "type": "address",
+                "name": "spender"
+            },
+            {
+                "type": "uint256",
+                "name": "spentGas"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "refundGasByValidatorToSchain",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "validatorId"
+            },
+            {
+                "type": "bytes32",
+                "name": "schainHash"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "renounceRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            },
+            {
+                "type": "address",
+                "name": "account"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "revokeRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "role"
+            },
+            {
+                "type": "address",
+                "name": "account"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "withdrawFundsFromSchainWallet",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "schainOwner"
+            },
+            {
+                "type": "bytes32",
+                "name": "schainHash"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "withdrawFundsFromValidatorWallet",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "amount"
+            }
+        ],
+        "outputs": []
+    }
+]

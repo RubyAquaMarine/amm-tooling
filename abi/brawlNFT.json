@@ -1,0 +1,1727 @@
+[
+    {
+        "type": "constructor",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_basePrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_perLevelPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_firstTeamPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_freePlayRefreshSeconds",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "name": "Approval",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "_approved",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenId",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "ApprovalForAll",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "_operator",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "bool",
+                "name": "_approved",
+                "internalType": "bool",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "BoughtSpecificHeroes",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "buyer",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "timeslot",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "price",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "hero1",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "hero2",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "hero3",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "Create",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "tokenID",
+                "internalType": "uint256",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "heroID",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "heroCode",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "OwnershipTransferred",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "previousOwner",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "newOwner",
+                "internalType": "address",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "SiblingAdded",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_added",
+                "internalType": "address",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "SiblingRemoved",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_removed",
+                "internalType": "address",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "Train",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "tokenID",
+                "internalType": "uint256",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "heroID",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "oldStats",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "newStats",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "Transfer",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_from",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "_to",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenId",
+                "internalType": "uint256",
+                "indexed": true
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "UpdateHero",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "tokenID",
+                "internalType": "uint256",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "heroID",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "newStats",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "fallback",
+        "stateMutability": "payable",
+        "payable": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "allocatePromoRandomHeroes",
+        "inputs": [
+            {
+                "type": "bytes32[]",
+                "name": "couponCodes",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "approve",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_approved",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "count",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "balanceOf",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "string",
+                "name": "",
+                "internalType": "string"
+            }
+        ],
+        "name": "baseURI",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "payable": true,
+        "outputs": [],
+        "name": "buySpecificHeroes",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "timeslot",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "cfoAddress",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "createAuction",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_heroID",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_startingPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_endingPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_duration",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "payable": true,
+        "outputs": [],
+        "name": "createHero",
+        "inputs": [],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "payable": true,
+        "outputs": [],
+        "name": "createMultipleHeroes",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "numberToCreate",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "firstHeroTeamPrice",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "freePlayRefreshSeconds",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract GameplayInterface"
+            }
+        ],
+        "name": "gameplayInterface",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "getApproved",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "_heroCode",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getHeroAt",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "heroCode1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroCode2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroCode3",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getHeroGroup",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroID1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroID2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroID3",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address[]",
+                "name": "",
+                "internalType": "address[]"
+            }
+        ],
+        "name": "getSiblings",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "heroDataOfOwner",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "heroDataRangeOfOwner",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "startNumber",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "numberToPull",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "heroIDRangeOfOwner",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "startNumber",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "numberToPull",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "heroIDsOfOwner",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "_heroCode",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "heroOfOwnerByIndex",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_index",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "heroPriceBase",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "heroPricePerLevel",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract AuctionInterface"
+            }
+        ],
+        "name": "heroSaleInterface",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "indexToApproved",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "indexToOwner",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isApprovedForAll",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "_operator",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isERC721",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isHeroInterface",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isPaused",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "lastBoughtHeroes",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "mintAndAuctionHeroes",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_startingPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_endingPrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_duration",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "level",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "numberToSell",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "mintHeroes",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "recipient",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "level",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "numberLegendaryToGrant",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "numberNormalToGrant",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "mintPromoHeroes",
+        "inputs": [
+            {
+                "type": "bytes32[]",
+                "name": "couponCodes",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "string",
+                "name": "",
+                "internalType": "string"
+            }
+        ],
+        "name": "name",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "operators",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "owner",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            }
+        ],
+        "name": "ownerOf",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            }
+        ],
+        "name": "ownerOfHeroGroup",
+        "inputs": [
+            {
+                "type": "uint256[3]",
+                "name": "heroIDs",
+                "internalType": "uint256[3]"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "pauseContracts",
+        "inputs": [],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "readPromoHeroes",
+        "inputs": [
+            {
+                "type": "bytes32[]",
+                "name": "couponCodes",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "readPromoRandomHeroes",
+        "inputs": [
+            {
+                "type": "bytes32[]",
+                "name": "couponCodes",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "recoveryAddress",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "redeemPromoHero",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "couponCode",
+                "internalType": "bytes32"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "redeemPromoRandomHero",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "couponCode",
+                "internalType": "bytes32"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "safeTransferFrom",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_from",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "_to",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "safeTransferFrom",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_from",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "_to",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setApprovalForAll",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_operator",
+                "internalType": "address"
+            },
+            {
+                "type": "bool",
+                "name": "_approved",
+                "internalType": "bool"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setBaseURI",
+        "inputs": [
+            {
+                "type": "string",
+                "name": "_baseURI",
+                "internalType": "string"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setCFO",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_newCFO",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setFreePlayData",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_freePlayRefreshSeconds",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_firstHeroTeamPrice",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setGameplayContractAddress",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_address",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setHeroPricing",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_basePrice",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_perLevelPrice",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setHeroSaleAuctionAddress",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_address",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setOperator",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_newOperator",
+                "internalType": "address"
+            },
+            {
+                "type": "bool",
+                "name": "isOperator",
+                "internalType": "bool"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setOwner",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_newOwner",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setRecovery",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_newRecovery",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract SiblingInterface"
+            }
+        ],
+        "name": "siblingContracts",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "supportsInterface",
+        "inputs": [
+            {
+                "type": "bytes4",
+                "name": "interfaceID",
+                "internalType": "bytes4"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "string",
+                "name": "",
+                "internalType": "string"
+            }
+        ],
+        "name": "symbol",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "tokenByIndex",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_index",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "tokenOfOwnerByIndex",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_owner",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_index",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "string",
+                "name": "",
+                "internalType": "string"
+            }
+        ],
+        "name": "tokenURI",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_tokenId",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "tokens",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "totalSupply",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "payable": true,
+        "outputs": [],
+        "name": "trainHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_heroID",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "choice",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "transferFrom",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_from",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "_to",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "_tokenID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "unpauseContracts",
+        "inputs": [],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "updateHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroCode",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "updateHeroGroup",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroCode1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroCode2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroCode3",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "updateSibling",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_oldAddress",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "_newAddress",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "hero1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "hero2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "hero3",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "viewSpecificHeroes",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "withdrawBalance",
+        "inputs": [],
+        "constant": false
+    }
+]

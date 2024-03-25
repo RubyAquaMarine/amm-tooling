@@ -1,0 +1,1244 @@
+[
+    {
+        "type": "constructor",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_heroAddress",
+                "internalType": "address"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "name": "ArenaFight",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "attacker",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "defender",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "queue",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "bool",
+                "name": "isAttackerWin",
+                "internalType": "bool",
+                "indexed": false
+            },
+            {
+                "type": "bytes32[21]",
+                "name": "rounds",
+                "internalType": "bytes32[21]",
+                "indexed": false
+            },
+            {
+                "type": "uint256[6]",
+                "name": "heroes",
+                "internalType": "uint256[6]",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "goldXpGained",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "Payout",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "fightID",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "winner",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "wins",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "payment",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "payoutTotal",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "QueueCleared",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256[4]",
+                "name": "queueContents",
+                "internalType": "uint256[4]",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "fallback",
+        "stateMutability": "payable",
+        "payable": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "addOrUpdateClans",
+        "inputs": [
+            {
+                "type": "uint256[32][]",
+                "name": "_clans",
+                "internalType": "uint256[32][]"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "addOrUpdateClasses",
+        "inputs": [
+            {
+                "type": "uint256[32][]",
+                "name": "_classes",
+                "internalType": "uint256[32][]"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract CharacterLogicInterface"
+            }
+        ],
+        "name": "characterLogic",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "clearQueue",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "fight",
+        "inputs": [],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "fightCount",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "fightCountForHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroId",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "fightCountForUser",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "freeArena",
+        "inputs": [
+            {
+                "type": "uint256[3]",
+                "name": "heroIDs",
+                "internalType": "uint256[3]"
+            },
+            {
+                "type": "uint256[3]",
+                "name": "heroChoices",
+                "internalType": "uint256[3]"
+            },
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract P2EInterface"
+            }
+        ],
+        "name": "freePlayP2E",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract GameLogicInterface"
+            }
+        ],
+        "name": "gameLogic",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "payoutTotal",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "payoutCount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "totalPayouts",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256[]",
+                "name": "payouts",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "getAllUserPayouts",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[6]",
+                "name": "combatants",
+                "internalType": "uint256[6]"
+            }
+        ],
+        "name": "getCombatants",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "attackingTeam",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "defendingTeam",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "attacker",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "defender",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "queue",
+                "internalType": "uint256"
+            },
+            {
+                "type": "bool",
+                "name": "isAttackerWin",
+                "internalType": "bool"
+            },
+            {
+                "type": "bytes32[21]",
+                "name": "rounds",
+                "internalType": "bytes32[21]"
+            },
+            {
+                "type": "uint256[6]",
+                "name": "heroes",
+                "internalType": "uint256[6]"
+            },
+            {
+                "type": "uint256",
+                "name": "goldXpGained",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getFight",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "fightId",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bytes32[]",
+                "name": "returnData",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "name": "getFightData",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "end",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bytes32[]",
+                "name": "returnData",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "name": "getFightDataByHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroId",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "end",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bytes32[]",
+                "name": "returnData",
+                "internalType": "bytes32[]"
+            }
+        ],
+        "name": "getFightDataByUser",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "end",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "fights",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "getFightsByHero",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroId",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "end",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[]",
+                "name": "fights",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "getFightsByUser",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "end",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "payoutTotal",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "payoutCount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "totalPayouts",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256[]",
+                "name": "payouts",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "getLast100UserPayouts",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[4]",
+                "name": "returnQueue",
+                "internalType": "uint256[4]"
+            },
+            {
+                "type": "uint256",
+                "name": "entryFees",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "rakePoints",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "goldPerLevel",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getQueue",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256[4]",
+                "name": "returnQueue",
+                "internalType": "uint256[4]"
+            },
+            {
+                "type": "uint256",
+                "name": "entryFees",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "rakePoints",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "goldPerLevel",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256[12]",
+                "name": "heroes",
+                "internalType": "uint256[12]"
+            }
+        ],
+        "name": "getQueueAndTeams",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getQueueCount",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "payoutTotal",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "payoutCount",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "totalPayouts",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256[]",
+                "name": "payouts",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "getUserPayoutsRange",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "start",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "hero0",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "hero1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "hero2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "choice0",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "choice1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "choice2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "targetBlockNumber",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "blockNumber",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "getUserQueueEntry",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "contract HeroInterface"
+            }
+        ],
+        "name": "heroContract",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isGameplayInterface",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "pure",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "isSiblingInterface",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "payable": true,
+        "outputs": [],
+        "name": "joinArena",
+        "inputs": [
+            {
+                "type": "uint256[3]",
+                "name": "heroIDs",
+                "internalType": "uint256[3]"
+            },
+            {
+                "type": "uint256[3]",
+                "name": "heroChoices",
+                "internalType": "uint256[3]"
+            },
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "manageArenaQueue",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "queueID",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "weiEntryFee",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "goldPoints",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "goldPerLevel",
+                "internalType": "uint256"
+            },
+            {
+                "type": "bool",
+                "name": "isDeleteQueue",
+                "internalType": "bool"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "maxArenaQueues",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "queueEntryFees",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "queueEntryRakePoints",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "queueGoldPerLevel",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "queues",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "resetHeroTeamCooldown",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "heroID1",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroID2",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "heroID3",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setCharacterLogicAddress",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_characterLogicAddress",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setFreePlayP2EAddress",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_freePlayP2E",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setGameLogicAddress",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "_gameLogicAddress",
+                "internalType": "address"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setP2EDivisor",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_p2eDivisor",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "setXpConstants",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_xpPerWin",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_xpPerLoss",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            },
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            },
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            },
+            {
+                "type": "bytes32[21]",
+                "name": "",
+                "internalType": "bytes32[21]"
+            },
+            {
+                "type": "uint256[6]",
+                "name": "",
+                "internalType": "uint256[6]"
+            }
+        ],
+        "name": "testArenaFight",
+        "inputs": [
+            {
+                "type": "uint256[6]",
+                "name": "combatantIDs",
+                "internalType": "uint256[6]"
+            },
+            {
+                "type": "uint256[6]",
+                "name": "choices",
+                "internalType": "uint256[6]"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "totalPayouts_",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "userPayoutTotals",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "payable": false,
+        "outputs": [],
+        "name": "withdrawBalance",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "amount",
+                "internalType": "uint256"
+            }
+        ],
+        "constant": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "xpPerLoss",
+        "inputs": [],
+        "constant": true
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "payable": false,
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "xpPerWin",
+        "inputs": [],
+        "constant": true
+    }
+]
